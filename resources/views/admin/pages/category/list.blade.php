@@ -44,8 +44,8 @@ List categories
                             @endif
                         </td>
                         <td>
-                            <button class="btn btn-primary edit" title="{{ 'edit '. $value->name }}"><i class="fas fa-edit"></i></button>
-                            <button class="btn btn-danger delete" title="{{ 'delete '. $value->name }}"><i class="fas fa-trash-alt"></i></button>
+                            <button class="btn btn-primary edit" title="{{ 'edit '. $value->name }}"  data-toggle="modal" data-target="#editModal"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger delete" title="{{ 'delete '. $value->name }}" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i></button>
                         </td>
                     </tr>
                     @endforeach
@@ -54,4 +54,62 @@ List categories
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div id="editModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit category</h4>
+      </div>
+      <div class="modal-body">
+      <form role="form" action="{{ route('category.store') }}" method="post">
+        @csrf
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter category name">
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select name="status" id="status">
+                <option value="1">Display</option>
+                <option value="0">Not Display</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-primary">Reset</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div id="deleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete category</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 @endsection

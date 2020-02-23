@@ -11,11 +11,11 @@
     </div>
 <div class="py-3">
 <div class="col-lg-12">
-<form action="{{ route(category.store) }}" method="post">
+<form role="form" action="{{ route('category.store') }}" method="post">
   @csrf
   <div class="form-group">
-    <label for="Name">Name</label>
-    <input type="text" class="form-control" id="Name" placeholder="Enter category name">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" id="name" placeholder="Enter category name">
   </div>
   <div class="form-group">
     <label for="status">Status</label>

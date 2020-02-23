@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -41,10 +42,11 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        dd(utf8tourl($request->slug));
+       // dd($request);
+         //dd(utf8tourl($request->slug));
         Category::create([
             'name' => $request->name,
-            'slug' => utf8tourl($request->slug),
+             'slug' => utf8tourl($request->slug),
             'status' => $request->status
         ]);
         return redirect()->route('category.index');
@@ -94,4 +96,5 @@ class CategoryController extends Controller
     {
         //
     }
+    
 }
