@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::paginate(5);
+        $category = Category::paginate(500);
+        return view('admin.pages.product.list',compact('product'));
     }
 
     /**
