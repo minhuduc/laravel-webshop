@@ -21,8 +21,8 @@ Product
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Promotional</th>
-                        <th>idCategory</th>
-                        <th>idProductType</th>
+                        <th>Category</th>
+                        <th>ProductType</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -80,19 +80,44 @@ Product
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit category <span class="title"></span></h4>
+        <h4 class="modal-title">Edit Product <span class="title"></span></h4>
       </div>
       <div class="modal-body">
+      <div class="error"></div>
       <form role="form">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control name" name="name" id="name" placeholder="Enter product type name">
+            <input type="text" class="form-control name" name="name" id="name" placeholder="Enter product name">
             <p class="error" style="font-size: 1rem; color: red; padding: 5px 0; width: 100%"></p>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control description" name="description" id="description" placeholder="Enter description">
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantiy</label>
+            <input type="text" class="form-control quantity" name="quantity" id="quantity" placeholder="Enter quantity">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control price" name="price" id="price" placeholder="Enter price">
+        </div>
+        <div class="form-group">
+            <label for="promotional">Promotional</label>
+            <input type="text" class="form-control promotional" name="promotional" id="promotional" placeholder="Enter promotional">
         </div>
         <div class="form-group">
           <label for="cate">Category</label>
           <select name="cate" id="cate">
           @foreach($category as $key => $value)
+            <option value="{{ $value->id }}">{{ $value->name }}</option>
+          @endforeach
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cate">Product Type</label>
+          <select name="producttype" id="producttype">
+          @foreach($producttype as $key => $value)
             <option value="{{ $value->id }}">{{ $value->name }}</option>
           @endforeach
           </select>
@@ -108,7 +133,7 @@ Product
         </form>
       </div>
       <div class="modal-footer">
-      <button type="submit" class="btn btn-success updateProducttype">Update</button>
+      <button type="submit" class="btn btn-success updateProduct">Update</button>
         <button type="reset" class="btn btn-primary">Reset</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
@@ -124,13 +149,13 @@ Product
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Delete category</h4>
+        <h4 class="modal-title">Delete Product</h4>
       </div>
       <div class="modal-body">
         <p>Are you sure.</p>
       </div>
       <div class="modal-footer">
-      <button type="submit" class="btn btn-danger delProductType">Delete</button>
+      <button type="submit" class="btn btn-danger delProduct">Delete</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>

@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    return view('client.pages.index');
+});
+Route::get('admin/', function () {
     return view('admin.pages.index');
 });
 Route::group(['prefix' => 'admin'], function () {
